@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV_CONFIG } from "@/routers/path-config";
 import logo from "@/assets/svgexport-4.svg";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,14 +68,14 @@ export const Header = () => {
           >
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-4  h-screen">
               {NAV_CONFIG.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <Button
                 variant="default"
