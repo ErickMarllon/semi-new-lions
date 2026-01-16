@@ -1,7 +1,27 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { PATH_PAGE } from "./routers/paths";
+import HomeScreen from "./views/Home";
+import FinancingScreen from "./views/Financing";
+import FipeScreen from "./views/Fipe";
+import StoresScreen from "./views/Stores";
+import AfterSalesScreen from "./views/AfterSales";
+import CatalogScreen from "./views/Catalog";
 
 function App() {
-  return <></>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={PATH_PAGE.home} element={<HomeScreen />} />
+        <Route path={PATH_PAGE.financing} element={<FinancingScreen />} />
+        <Route path={PATH_PAGE.fipe} element={<FipeScreen />} />
+        <Route path={PATH_PAGE.stores} element={<StoresScreen />} />
+        <Route path={PATH_PAGE.afterSales} element={<AfterSalesScreen />} />
+        <Route path={PATH_PAGE.catalog} element={<CatalogScreen />} />
+        <Route path={PATH_PAGE.scheduleVisit} element={<StoresScreen />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
