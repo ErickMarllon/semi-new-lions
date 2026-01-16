@@ -3,5 +3,6 @@
 @import "./styles/theme.css";
 @import "./styles/base.css";
 @import "./styles/animate.css";
+@import "./styles/utilities.css";
 
 @custom-variant dark (&:is(.dark *));

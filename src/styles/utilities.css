@@ -1,0 +1,8 @@
+@layer utilities {
+  .text-clamp-7xl {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+  }
+  .leading-clamp {
+    line-height: clamp(2.5rem, 6vw, 4.5rem);
+  }
+}
