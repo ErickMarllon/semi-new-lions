@@ -20,7 +20,10 @@ interface Props {
 const DiscountModal = ({ open, setOpen }: Props) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild className="fixed -left-25 top-50 hidden md:block">
+      <DialogTrigger
+        asChild
+        className="fixed -left-25 top-50 hidden md:block z-100"
+      >
         <Button
           variant="default"
           className="-rotate-90 rounded-b-2xl text-lg rounded-t-none font-bold bg-brand hover:text-brand  text-white hover:bg-white"
