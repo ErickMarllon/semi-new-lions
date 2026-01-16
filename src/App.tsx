@@ -7,22 +7,26 @@ import StoresScreen from "./views/Stores";
 import AfterSalesScreen from "./views/AfterSales";
 import CatalogScreen from "./views/Catalog";
 import MainLayout from "./layout/main/layout";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path={PATH_PAGE.home} element={<HomeScreen />} />
-          <Route path={PATH_PAGE.financing} element={<FinancingScreen />} />
-          <Route path={PATH_PAGE.fipe} element={<FipeScreen />} />
-          <Route path={PATH_PAGE.stores} element={<StoresScreen />} />
-          <Route path={PATH_PAGE.afterSales} element={<AfterSalesScreen />} />
-          <Route path={PATH_PAGE.catalog} element={<CatalogScreen />} />
-          <Route path={PATH_PAGE.scheduleVisit} element={<StoresScreen />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Toaster richColors position="top-right" />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path={PATH_PAGE.home} element={<HomeScreen />} />
+            <Route path={PATH_PAGE.financing} element={<FinancingScreen />} />
+            <Route path={PATH_PAGE.fipe} element={<FipeScreen />} />
+            <Route path={PATH_PAGE.stores} element={<StoresScreen />} />
+            <Route path={PATH_PAGE.afterSales} element={<AfterSalesScreen />} />
+            <Route path={PATH_PAGE.catalog} element={<CatalogScreen />} />
+            <Route path={PATH_PAGE.scheduleVisit} element={<StoresScreen />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
