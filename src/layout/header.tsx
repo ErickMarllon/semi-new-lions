@@ -10,16 +10,16 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <motion.a
-            href="#"
+            href="/"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="">
+            <div>
               <img src={logo} alt="Logo da empresa Lions seminovos" />
             </div>
           </motion.a>
@@ -66,12 +66,12 @@ export const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-card border-t border-border"
           >
-            <nav className="container mx-auto px-4 py-6 flex flex-col gap-4  h-screen">
+            <nav className="container mx-auto px-4 py-6 flex flex-col gap-4 items-center h-screen">
               {NAV_CONFIG.map((link) => (
                 <Link
                   key={link.label}
                   to={link.href}
-                  className="text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                  className="text-lg font-medium text-foreground  transition-colors py-2 w-full items-center flex justify-center hover:text-brand"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
