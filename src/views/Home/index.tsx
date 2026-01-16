@@ -1,7 +1,9 @@
+import HomeHero from "./components/homeHero";
+
 export default function HomeScreen() {
   return (
     <div>
-      <h1>HomeScreen</h1>
+      <HomeHero />
     </div>
   );
 }
