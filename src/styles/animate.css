@@ -13,6 +13,22 @@
   }
 }
 
+@keyframes pulse-slow-scale {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.8;
+  }
+}
+
 .pulse-wpp {
   animation: pulse-wpp 2.6s infinite;
+}
+
+.pulse-slow-scale {
+  animation: pulse-slow-scale 3s ease-in-out infinite;
 }

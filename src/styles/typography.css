@@ -1,0 +1,12 @@
+:root {
+  --font-primary:
+    "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+
+  --font-secondary: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@theme {
+  --font-primary: var(--font-primary);
+  --font-secondary: var(--font-secondary);
+}
