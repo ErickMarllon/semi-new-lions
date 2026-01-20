@@ -20,9 +20,16 @@ import {
 
 import { discountFormSchema, type IDiscountFormData } from "@/schemas/discount";
 import { generateWhatsAppLink } from "@/utils/generateWhatsAppLink";
-import { createDiscountMessage } from "@/utils/createDiscountMessage";
 import { STORES } from "@/constants/stores";
 import vehicleImg from "@/assets/vehicle-BJXu40DY.png";
+import {
+  DialogClose,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
+import { X } from "lucide-react";
+import { createMessage } from "@/utils/createMessage";
 
 const defaultValues = {
   name: "",
@@ -37,117 +44,138 @@ const DiscountForm = () => {
   });
 
   function onSubmit(data: IDiscountFormData) {
-    const message = createDiscountMessage(data);
+    const message = createMessage({ ...data, type: "discount" });
 
     const link = generateWhatsAppLink({ message });
     window.open(link, "_blank");
   }
 
   return (
-    <Form {...form}>
-      <div className="w-full flex flex-col items-center">
-        <h3 className="font-bold text-2xl text-center py-1">
-          GANHE UM DESCONTO DE ATÉ{" "}
-          <span className="text-gold">R$ 3.000,00</span>
-        </h3>
-        <figure>
-          <img src={vehicleImg} alt="Carros para o banner flutuante" />
-        </figure>
-      </div>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-2 max-w-md flex flex-col items-center"
-      >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel className="sr-only">nome</FormLabel>
-              <FormControl>
-                <Input
-                  required
-                  placeholder="Seu nome"
-                  className="bg-gray-50/30! text-white! placeholder-white!"
-                  {...field}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="phone_number"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel className="sr-only">Telefone</FormLabel>
-              <FormControl>
-                <Input
-                  required
-                  placeholder="Seu nome"
-                  {...field}
-                  className="bg-gray-50/30! text-white!   placeholder-white!"
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel className="sr-only">Email</FormLabel>
-              <FormControl>
-                <Input
-                  required
-                  placeholder="email@exemplo.com"
-                  {...field}
-                  className="bg-gray-50/30! text-white! placeholder-white!"
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="store"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel className="sr-only">Loja</FormLabel>
-              <Select required onValueChange={field.onChange}>
-                <FormControl>
-                  <SelectTrigger className="w-full bg-gray-50/30! text-white!">
-                    <SelectValue placeholder="Selecione uma loja" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {STORES.map((store) => (
-                    <SelectItem
-                      key={store.value}
-                      value={store.label}
-                      hidden={store.hidden}
-                    >
-                      {store.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </FormItem>
-          )}
-        />
-
-        <Button
-          type="submit"
-          className="w-full bg-gold hover:bg-gold text-brand font-bold text-md max-w-32 hover:scale-105 duration-300 cursor-pointer"
+    <>
+      <span className="absolute right-4 top-2">
+        <DialogClose className="bg-white rounded-full h-6 w-6 flex items-center justify-center cursor-pointer hover:scale-110 duration-300">
+          <X size={12} className="stroke-gray-800" />
+        </DialogClose>
+      </span>
+      <DialogHeader>
+        <DialogTitle className="sr-only">Formulário de contato</DialogTitle>
+        <DialogDescription className="sr-only">
+          Preencha o formulário abaixo para receber seu desconto exclusivo da
+          Lions Seminovos.
+        </DialogDescription>
+      </DialogHeader>
+      <Form {...form}>
+        <div className="w-full flex flex-col items-center z-100">
+          <h3 className="font-bold text-2xl text-center py-1">
+            GANHE UM DESCONTO DE ATÉ{" "}
+            <span className="text-gold-500">R$ 3.000,00</span>
+          </h3>
+          <figure>
+            <img src={vehicleImg} alt="Carros para o banner flutuante" />
+          </figure>
+        </div>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-2 w-full flex flex-col items-center"
         >
-          Solicitar
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="sr-only">nome</FormLabel>
+                <FormControl>
+                  <Input
+                    required
+                    placeholder="Seu nome"
+                    className="bg-gray-50/30! text-white! placeholder-white!"
+                    {...field}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="phone_number"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="sr-only">Telefone</FormLabel>
+                <FormControl>
+                  <Input
+                    required
+                    placeholder="Seu telefone"
+                    {...field}
+                    className="bg-gray-50/30! text-white!   placeholder-white!"
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="sr-only">Email</FormLabel>
+                <FormControl>
+                  <Input
+                    required
+                    placeholder="email@exemplo.com"
+                    {...field}
+                    className="bg-gray-50/30! text-white! placeholder-white!"
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="store"
+            render={({ field }) => (
+              <FormItem className="w-full relative">
+                <FormLabel className="sr-only">Loja</FormLabel>
+                <Select required onValueChange={field.onChange}>
+                  <FormControl>
+                    <SelectTrigger className="w-full bg-gray-50/30! text-white!">
+                      <SelectValue placeholder="Selecione uma loja" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent
+                    position="popper"
+                    side="bottom"
+                    align="start"
+                    sideOffset={4}
+                    avoidCollisions={false}
+                  >
+                    {STORES.map((store) => (
+                      <SelectItem
+                        key={store.value}
+                        value={store.label}
+                        hidden={store.hidden}
+                      >
+                        {store.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormItem>
+            )}
+          />
+
+          <Button
+            type="submit"
+            variant={"gold"}
+            className="w-full  text-brand font-bold text-md max-w-32 hover:scale-105 duration-300 cursor-pointer "
+          >
+            Solicitar
+          </Button>
+        </form>
+      </Form>
+    </>
   );
 };
 export default DiscountForm;
