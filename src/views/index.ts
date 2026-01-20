@@ -5,3 +5,4 @@ export * from "./Fipe";
 export * from "./Home";
 export * from "./ScheduleVisit";
 export * from "./Stores";
+export * from "./Error";
