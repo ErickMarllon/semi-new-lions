@@ -1,6 +1,14 @@
 export const SOCIAL_ICONS = [
-  "akar-icons:instagram-fill",
-  "akar-icons:facebook-fill",
-  "akar-icons:youtube-fill",
-  "akar-icons:linkedin-fill",
+  {
+    icon: "akar-icons:instagram-fill",
+    href: "https://www.instagram.com/lionsseminovos",
+  },
+  {
+    icon: "akar-icons:facebook-fill",
+    href: "https://www.facebook.com/lionsseminovos",
+  },
+  {
+    icon: "akar-icons:youtube-fill",
+    href: "https://www.youtube.com/@lionsseminovos",
+  },
 ];
