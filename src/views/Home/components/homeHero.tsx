@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import Iconify from "@/components/Iconify";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 const textContainerVariants = {
   hidden: {},
@@ -39,7 +39,6 @@ const textItemVariants = {
 export default function HomeHero() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const { toast } = useToast();
 
   useEffect(() => {
     if (!api) {
@@ -64,7 +63,7 @@ export default function HomeHero() {
           {GALLERY_IMAGES.map((el, index) => (
             <CarouselItem
               key={index}
-              className="pl-1 w-full h-screen overflow-hidden relative"
+              className="pl-1 w-full h-[90dvh] overflow-hidden relative"
             >
               <motion.img
                 src={el.img}
@@ -75,6 +74,8 @@ export default function HomeHero() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               />
+              <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-black " />
+              <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-black/60" />
 
               <motion.div
                 key={current}
@@ -92,10 +93,7 @@ export default function HomeHero() {
                 </motion.h1>
 
                 {el.subTitle && (
-                  <motion.p
-                    variants={textItemVariants}
-                    className="text-lg md:text-xl"
-                  >
+                  <motion.p variants={textItemVariants} className="text-base ">
                     {el.subTitle}
                   </motion.p>
                 )}
@@ -130,7 +128,7 @@ export default function HomeHero() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
         {GALLERY_IMAGES.map((_, index) => (
           <button
             key={index}
