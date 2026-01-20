@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const WhatsAppFloat = () => {
   return (
-    <div className="fixed right-4.5 bottom-5 z-100 group/wpp bg-[linear-gradient(135deg,#25d366,#128c7e)] rounded-full">
+    <div className="fixed right-4.5 bottom-5 z-40 group/wpp bg-[linear-gradient(135deg,#25d366,#128c7e)] rounded-full">
       <Link
         to={generateWhatsAppLink()}
         target="_blank"
