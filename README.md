@@ -1,73 +1,139 @@
-# React + TypeScript + Vite
+# Semi-New Lions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**React + Vite + Tailwind + Zod + TanStack Query + Axios**  
+Projeto de teste para vaga de Desenvolvedor Frontend na Lions Semi Novos.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Sobre o Projeto
 
-## React Compiler
+O **Semi-New Lions** é uma aplicação frontend construída com React e Vite, com foco em desempenho, escalabilidade e boas práticas.  
+Esta aplicação demonstra habilidades em desenvolvimento frontend moderno através de uma simulação de plataforma para concessionária de veículos semi-novos.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ✨ Destaques do Projeto
+- **Arquitetura escalável** com separação clara de responsabilidades
+- **Experiência do usuário** refinada com acessibilidade, animações e feedback visual
+- **Código robusto** com validação de tipos, formulários e estado assíncrono
+- **Performance otimizada** com lazy loading e build eficiente
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### **Core**
+- **React 19** – Biblioteca principal de UI com hooks e componentes funcionais
+- **TypeScript** – Tipagem estática para maior segurança do código
+- **Vite 5** – Ferramenta de build rápida com HMR e otimizações
+- **Tailwind CSS 4 (alpha)** – Framework CSS utilitário com suporte a design tokens
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### **Gerenciamento de Estado & Dados**
+- **TanStack Query v5** – Gerenciamento de estado assíncrono, cache e sincronização
+- **Axios** – Cliente HTTP para chamadas de API com interceptors
+- **React Hook Form** – Gerenciamento de formulários com performance otimizada
+- **Zod** – Validação de esquemas TypeScript-first
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### **UI & UX**
+- **Radix UI** – Componentes primitivos acessíveis (Dialog, Popover, Select, etc.)
+- **Framer Motion** – Biblioteca de animações para React
+- **Sonner** – Notificações toast elegantes e customizáveis
+- **Tailwind Merge** – Utilidade para combinação inteligente de classes Tailwind
+- **React Router Dom v6** – Navegação client-side com rotas aninhadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+## 📁 Estrutura do Projeto
+
+```text
+src/
+├── assets/         # Imagens e SVGs
+├── components/     # Componentes reutilizáveis
+├── constants/      # Constantes e dados fixos
+├── hooks/          # Hooks personalizados
+├── http/           # Configuração de Axios e mocks
+├── layout/         # Layout principal e header/footer
+├── lib/            # Funções utilitárias
+├── queries/        # TanStack Query hooks
+├── routers/        # Configuração de rotas
+├── schemas/        # Schemas do Zod para validação
+├── services/       # Serviços de integração com APIs
+├── styles/         # Estilos globais e animações
+└── views/          # Páginas principais (Home, Catalog, ScheduleVisit, etc.)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Começando
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### **Pré-requisitos**
+- Node.js >= 20.0.0
+- Yarn 4.0.0 ou npm 10.0.0
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### **Instalação**
+
+```bash
+# Clone o repositório
+git clone https://github.com/ErickMarllon/semi-new-lions.git
+
+# Acesse o diretório
+cd semi-new-lions
+
+# Instale as dependências
+yarn install
+# ou
+npm install
 ```
+
+### **Ambientes de Execução**
+
+```bash
+# Desenvolvimento (hot reload em http://localhost:5173)
+yarn dev
+
+# Build de produção
+yarn build
+
+# Preview do build de produção
+yarn preview
+```
+
+## 🧪 Funcionalidades Principais
+
+### Catálogo de Veículos
+
+- Listagem paginada de veículos
+- Filtros dinâmicos (marca, modelo, ano, preço)
+
+### Agendamento de Visitas
+
+- Formulário com validação
+- Seleção de data/hora com calendário interativo
+- Confirmação com notificação
+- Validação em tempo real com Zod
+
+### Mock de API
+
+- Simulação de endpoints RESTful
+- Delay configurável para simular latência
+- Estados de loading, error e success
+
+### Feedback ao Usuário
+
+- Notificações toast
+- Animações sutis entre transições
+- Estados de loading, error e success
+
+
+## 📄 Licença
+Este projeto foi desenvolvido como teste técnico para a vaga de Desenvolvedor Frontend na Lions Semi Novos.
+
+## 👨‍💻 Autor
+Erick Marllon – Desenvolvedor Full Stack / Frontend
+
+
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin)](https://www.linkedin.com/in/erickmarllon/) ou https://www.linkedin.com/in/erickmarllon
+
+📧 Email: erick.marllon@outlook.com.br
+📍 Localização: Rio de Janeiro, Brasil
+
+
+
+
+
+
+
+
